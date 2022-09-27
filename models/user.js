@@ -7,6 +7,14 @@ var userSchema = new Schema({
     type: String,
     required: true,
   },
+  occupation: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
   pool: {
     type: Schema.Types.ObjectId,
     ref: "Pool",
