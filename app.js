@@ -124,6 +124,15 @@ app.post("/addall", (req, res) => {
     });
   });
   res.send("all users added to pool");
+  //add pool to all users
+  User.find({}, (err, users) => {
+    users.forEach((user) => {
+      User.findById(user._id, (err, user) => {
+        user.pool = req.body.poolId;
+        user.save();
+      });
+    });
+  });
 });
 
 //remove all users from the pool
@@ -140,6 +149,13 @@ app.delete("/removeall", (req, res) => {
 app.get("/pools", (req, res) => {
   Pool.find({}, (err, pools) => {
     res.send(pools);
+  });
+});
+
+//delete all matches
+app.delete("/deletematches", (req, res) => {
+  Match.deleteMany({}, (err) => {
+    res.send("all matches deleted");
   });
 });
 

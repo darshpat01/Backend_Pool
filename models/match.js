@@ -1,5 +1,3 @@
-//make a match schema
-
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
